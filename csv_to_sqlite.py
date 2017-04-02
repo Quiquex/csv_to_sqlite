@@ -95,7 +95,7 @@ def process_csv(csv_file, args, count):
             table, ",".join(columns)))
     insert_query = "INSERT INTO '{}' ({}) VALUES ({})".format(
         table, ",".join(columns), ",".join(["?" for col in columns]))
-    if args.append is True:
+    if args.append:
         fix_data_length(csv_data, len(columns))
     cur.executemany(insert_query, csv_data)
     con.commit()
