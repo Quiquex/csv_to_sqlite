@@ -41,21 +41,21 @@ optional arguments:
   -t TABLE, --table TABLE
                         name of the table into wich the rows will be inserted,
                         if provided in multi table mode a progressive number
-                        is appended to each table. Default is [csv_file_name]
+                        is appended to each table. Default is export in single
+                        mode otherwise it's [csv_file_name]
   -c COLUMNS [COLUMNS ...], --columns COLUMNS [COLUMNS ...]
                         space separated names of the columns to be created in
                         the provided table. Default behaviour is to use the
                         first line in the csv file)
-  -m {single,multi_table,multi}, --mode {single,multi_table,multi}
+  -m {single,multi_table,multi_db}, --mode {single,multi_table,multi_db}
                         mode to use single: only one database file is created
                         and one table multi_table: one db and multiple tables
-                        multi: multiple db files, each one with a single
+                        multi_db: multiple db files, each one with a single
                         table. Default is single
   -d DELIMITER, --delimiter DELIMITER
                         the character used to separate values in the csv file.
                         Default is comma ','
-  -a APPEND, --append APPEND
-                        if set, the script will append some empty strings in
+  -a, --append          if set, the script will append some empty strings in
                         case the length of line in the csv doesn't match the
                         number of columns provided
 ```
