@@ -22,6 +22,7 @@ def proc_args():
     parser.add_argument(
         "-o",
         "--out_db",
+        nargs=1,
         help=(
             "name and path of the sqlite database, "
             "only used if mode is either single or multi_table"
@@ -61,6 +62,7 @@ def proc_args():
     parser.add_argument(
         "-d",
         "--delimiter",
+        nargs=1,
         help=(
             "the character used to separate values in the "
             "csv file. Default is comma ','"),
@@ -68,6 +70,7 @@ def proc_args():
     parser.add_argument(
         "-a",
         "--append",
+        action="store_true",
         help=(
             "if set, the script will append some empty strings "
             "in case the length of line in the csv doesn't "
@@ -90,7 +93,7 @@ def process_csv(csv_file, args, count):
             table, ",".join(columns)))
     insert_query = "INSERT INTO '{}' ({}) VALUES ({})".format(
         table, ",".join(columns), ",".join(["?" for col in columns]))
-    if args.append is not None:
+    if args.append is True:
         fix_data_length(csv_data, len(columns))
     cur.executemany(insert_query, csv_data)
     con.commit()
