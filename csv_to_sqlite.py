@@ -32,6 +32,7 @@ def proc_args():
     parser.add_argument(
         "-t",
         "--table",
+        nargs=1,
         help=(
             "name of the table into wich the rows will be inserted, "
             "if provided in multi table mode a progressive number is "
@@ -49,6 +50,7 @@ def proc_args():
     parser.add_argument(
         "-m",
         "--mode",
+        nargs=1,
         choices=[
             "single",
             "multi_table",
